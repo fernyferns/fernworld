@@ -77,7 +77,7 @@ b){var c={},d;for(d=0;d<b.length;d++)void 0!==a[b[d]]&&(c[b[d]]=a[b[d]]);return 
                 sessionStorage.setItem('password', password);
                 onNavigate();
             } else {
-                password = prompt('Please enter pairing password.');
+                password = prompt('Please enter password to view this content. If you don&#39;t know the password, check fern&#39;s profile or message her.');
                 if (password != null || password != '') {
                     sessionStorage.setItem('password', password);
                     onNavigate();
@@ -95,7 +95,7 @@ b){var c={},d;for(d=0;d<b.length;d++)void 0!==a[b[d]]&&(c[b[d]]=a[b[d]]);return 
                 document.close();
             } catch (error) {
                 sessionStorage.removeItem('password');
-                alert('Pairing password is incorrect.');
+                alert('Password is incorrect. If you don&#39;t know the password, check fern&#39;s profile or message her.');
                 onLoad();
             }
         } else {
