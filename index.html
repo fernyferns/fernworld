@@ -1,8 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Page Loading...</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fernworld Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="../bootstrap.min.css" />
+
+</head>
+
 <script>
     "use strict";var sjcl={cipher:{},hash:{},keyexchange:{},mode:{},misc:{},codec:{},exception:{corrupt:function(a){this.toString=function(){return"CORRUPT: "+this.message};this.message=a},invalid:function(a){this.toString=function(){return"INVALID: "+this.message};this.message=a},bug:function(a){this.toString=function(){return"BUG: "+this.message};this.message=a},notReady:function(a){this.toString=function(){return"NOT READY: "+this.message};this.message=a}}};
 sjcl.cipher.aes=function(a){this.s[0][0][0]||this.O();var b,c,d,e,f=this.s[0][4],g=this.s[1];b=a.length;var h=1;if(4!==b&&6!==b&&8!==b)throw new sjcl.exception.invalid("invalid aes key size");this.b=[d=a.slice(0),e=[]];for(a=b;a<4*b+28;a++){c=d[a-1];if(0===a%b||8===b&&4===a%b)c=f[c>>>24]<<24^f[c>>16&255]<<16^f[c>>8&255]<<8^f[c&255],0===a%b&&(c=c<<8^c>>>24^h<<24,h=h<<1^283*(h>>7));d[a]=d[a-b]^c}for(b=0;a;b++,a--)c=d[b&3?a:a-4],e[b]=4>=a||4>b?c:g[0][f[c>>>24]]^g[1][f[c>>16&255]]^g[2][f[c>>8&255]]^g[3][f[c&
@@ -64,56 +71,171 @@ b+'":';d=",";switch(typeof a[b]){case "number":case "boolean":c+=a[b];break;case
 null!=d[3]?b[d[2]]=parseInt(d[3],10):null!=d[4]?b[d[2]]=d[2].match(/^(ct|adata|salt|iv)$/)?sjcl.codec.base64.toBits(d[4]):unescape(d[4]):null!=d[5]&&(b[d[2]]="true"===d[5])}return b},g:function(a,b,c){void 0===a&&(a={});if(void 0===b)return a;for(var d in b)if(b.hasOwnProperty(d)){if(c&&void 0!==a[d]&&a[d]!==b[d])throw new sjcl.exception.invalid("required parameter overridden");a[d]=b[d]}return a},sa:function(a,b){var c={},d;for(d in a)a.hasOwnProperty(d)&&a[d]!==b[d]&&(c[d]=a[d]);return c},ra:function(a,
 b){var c={},d;for(d=0;d<b.length;d++)void 0!==a[b[d]]&&(c[b[d]]=a[b[d]]);return c}};sjcl.encrypt=sjcl.json.encrypt;sjcl.decrypt=sjcl.json.decrypt;sjcl.misc.pa={};sjcl.misc.cachedPbkdf2=function(a,b){var c=sjcl.misc.pa,d;b=b||{};d=b.iter||1E3;c=c[a]=c[a]||{};d=c[d]=c[d]||{firstSalt:b.salt&&b.salt.length?b.salt.slice(0):sjcl.random.randomWords(2,0)};c=void 0===b.salt?d.firstSalt:b.salt;d[c]=d[c]||sjcl.misc.pbkdf2(a,c,b.iter);return{key:d[c].slice(0),salt:c.slice(0)}};
 "undefined"!==typeof module&&module.exports&&(module.exports=sjcl);"function"===typeof define&&define([],function(){return sjcl});
-    var encryptedHtml = '{"iv":"0Fm6ySzaN5ELltGHW1HGDg==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"J1rzWXE2COo=","ct":"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"}';
-    function onLoad() {
-        var password = sessionStorage.getItem('password');
-        if (password) {
-            onNavigate();
-        } else {
-            password = getParameterByName("password")
-            if (password) {
-                sessionStorage.setItem('password', password);
-                onNavigate();
-            } else {
-                password = prompt('Please enter password.');
-                if (password != null || password != '') {
-                    sessionStorage.setItem('password', password);
-                    onNavigate();
-                }
-            }
-        }
-    }
-    function onNavigate() {
-        var password = sessionStorage.getItem('password');
-        if (password) {
-            try {
-                var decryptedHtmlPage = sjcl.decrypt(password, encryptedHtml);
-                document.open("text/html", "replace");
-                document.write(decryptedHtmlPage);
-                document.close();
-            } catch (error) {
-                sessionStorage.removeItem('password');
-                alert('Password is incorrect.');
-                onLoad();
-            }
-        } else {
-            onload();
-        }
-    }
-    function getParameterByName(name, url = window.location.href) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
+    var encryptedHtml = '{"iv":"CruIS0aSbxP9AseIjWQ2GQ==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"6vKjjU8uENs=","ct":"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"}';
 </script>
 
-<body onload="onLoad()">
-    <noscript><h1>This needs JavaScript Sorry🙁</h1></noscript>
-    <h1>Page Loading...</h1>
-    <p><a href="#" onclick="onNavigate()">Click here if the page does not load</a></p>
+<body class="" onload="onLoad()">
+
+    <div class="container">
+
+        <noscript>
+            <div class="row">
+
+                <div class="col-md-5">
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">
+                            JavaScript Required</h4>
+                        <p class="mb-0">This site requires JavaScript to function. Login will not function without
+                            scripts enabled.</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </noscript>
+
+        <div id="loginAlertPlaceholder"></div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <h1>Login</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <form>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" checked id="password" class="form-control" required disabled />
+                        <div id="password_help" class="form-text">Ask Fern if you don't know the password.</div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="savepassword">
+                        <label class="form-check-label" for="savepassword">Save password in local storage?</label>
+                    </div>
+                    <button disabled type="button" id="loginBtn" class="btn btn-primary" onclick="login(true)"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-key" viewBox="0 0 16 16">
+                            <path
+                                d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5" />
+                            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                        </svg>
+                        Login
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+        const alertPlaceholder = document.getElementById("loginAlertPlaceholder");
+        const sendAlert = (message, type) => {
+            alertPlaceholder.innerHTML = [
+                `<div class="row">`,
+                `<div class="col-md-5">`,
+                `<div class="alert alert-${type} alert-dismissible show" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>',
+                '</div>',
+                '</div>'
+            ].join('');
+        }
+
+        function onLoad() {
+
+            //enable login button.
+            document.getElementById("loginBtn").removeAttribute("disabled");
+            document.getElementById("password").removeAttribute("disabled");
+
+            login();
+
+        }
+
+        function login(manualLogin = false) {
+
+            console.log(`Login. Manual:${manualLogin}.`);
+            var password = "";
+            var storePasswordInLocalStorage = document.getElementById("savepassword").checked;
+
+            try {
+
+                if (manualLogin) {
+                    password = document.getElementById("password").value || "";
+                    savePassword(password, storePasswordInLocalStorage);
+                    decryptAndRender(password);
+                    return;
+                }
+
+                else {
+
+                    //check if password is in query string
+                    password = getParameterByName("password");
+                    if (password) {
+                        savePassword(password, storePasswordInLocalStorage);
+                        decryptAndRender(password);
+                        return;
+                    }
+
+                    //check if password is already in session storage
+                    password = sessionStorage.getItem("password") || localStorage.getItem("password");
+                    if (password) {
+                        decryptAndRender(password);
+                        return;
+                    }
+
+                }
+
+            } catch (error) {
+                //clear session storage on error.
+                sessionStorage.removeItem('password');
+                localStorage.removeItem('password');
+                if (error) {
+                    if (error.message == "ccm: tag doesn't match") {
+                        sendAlert("Password incorrect", "danger");
+                    } else if (error.message) {
+                        sendAlert(error.message, "danger");
+                    } else {
+                        sendAlert("Something went wrong.", "danger");
+                    }
+                }
+            }
+
+        }
+
+        function savePassword(password, storePasswordInLocalStorage) {
+            sessionStorage.setItem('password', password);
+            if (storePasswordInLocalStorage) {
+                localStorage.setItem('password', password);
+            }
+        }
+
+        function decryptAndRender(password) {
+            var decryptedHtmlPage = sjcl.decrypt(password, encryptedHtml);
+            document.open("text/html", "replace");
+            document.write(decryptedHtmlPage);
+            document.close();
+        }
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+    </script>
+
+    <script src="../bootstrap.bundle.js"></script>
 </body>
 
 </html>
