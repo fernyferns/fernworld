@@ -1,4 +1,10 @@
-"use strict";var sjcl={cipher:{},hash:{},keyexchange:{},mode:{},misc:{},codec:{},exception:{corrupt:function(a){this.toString=function(){return"CORRUPT: "+this.message};this.message=a},invalid:function(a){this.toString=function(){return"INVALID: "+this.message};this.message=a},bug:function(a){this.toString=function(){return"BUG: "+this.message};this.message=a},notReady:function(a){this.toString=function(){return"NOT READY: "+this.message};this.message=a}}};
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page Loading...</title>
+<script>
+    "use strict";var sjcl={cipher:{},hash:{},keyexchange:{},mode:{},misc:{},codec:{},exception:{corrupt:function(a){this.toString=function(){return"CORRUPT: "+this.message};this.message=a},invalid:function(a){this.toString=function(){return"INVALID: "+this.message};this.message=a},bug:function(a){this.toString=function(){return"BUG: "+this.message};this.message=a},notReady:function(a){this.toString=function(){return"NOT READY: "+this.message};this.message=a}}};
 sjcl.cipher.aes=function(a){this.s[0][0][0]||this.O();var b,c,d,e,f=this.s[0][4],g=this.s[1];b=a.length;var h=1;if(4!==b&&6!==b&&8!==b)throw new sjcl.exception.invalid("invalid aes key size");this.b=[d=a.slice(0),e=[]];for(a=b;a<4*b+28;a++){c=d[a-1];if(0===a%b||8===b&&4===a%b)c=f[c>>>24]<<24^f[c>>16&255]<<16^f[c>>8&255]<<8^f[c&255],0===a%b&&(c=c<<8^c>>>24^h<<24,h=h<<1^283*(h>>7));d[a]=d[a-b]^c}for(b=0;a;b++,a--)c=d[b&3?a:a-4],e[b]=4>=a||4>b?c:g[0][f[c>>>24]]^g[1][f[c>>16&255]]^g[2][f[c>>8&255]]^g[3][f[c&
 255]]};
 sjcl.cipher.aes.prototype={encrypt:function(a){return t(this,a,0)},decrypt:function(a){return t(this,a,1)},s:[[[],[],[],[],[]],[[],[],[],[],[]]],O:function(){var a=this.s[0],b=this.s[1],c=a[4],d=b[4],e,f,g,h=[],k=[],l,n,m,p;for(e=0;0x100>e;e++)k[(h[e]=e<<1^283*(e>>7))^e]=e;for(f=g=0;!c[f];f^=l||1,g=k[g]||1)for(m=g^g<<1^g<<2^g<<3^g<<4,m=m>>8^m&255^99,c[f]=m,d[m]=f,n=h[e=h[l=h[f]]],p=0x1010101*n^0x10001*e^0x101*l^0x1010100*f,n=0x101*h[m]^0x1010100*m,e=0;4>e;e++)a[e][f]=n=n<<24^n>>>8,b[e][m]=p=p<<24^p>>>8;for(e=
@@ -58,3 +64,55 @@ b+'":';d=",";switch(typeof a[b]){case "number":case "boolean":c+=a[b];break;case
 null!=d[3]?b[d[2]]=parseInt(d[3],10):null!=d[4]?b[d[2]]=d[2].match(/^(ct|adata|salt|iv)$/)?sjcl.codec.base64.toBits(d[4]):unescape(d[4]):null!=d[5]&&(b[d[2]]="true"===d[5])}return b},g:function(a,b,c){void 0===a&&(a={});if(void 0===b)return a;for(var d in b)if(b.hasOwnProperty(d)){if(c&&void 0!==a[d]&&a[d]!==b[d])throw new sjcl.exception.invalid("required parameter overridden");a[d]=b[d]}return a},sa:function(a,b){var c={},d;for(d in a)a.hasOwnProperty(d)&&a[d]!==b[d]&&(c[d]=a[d]);return c},ra:function(a,
 b){var c={},d;for(d=0;d<b.length;d++)void 0!==a[b[d]]&&(c[b[d]]=a[b[d]]);return c}};sjcl.encrypt=sjcl.json.encrypt;sjcl.decrypt=sjcl.json.decrypt;sjcl.misc.pa={};sjcl.misc.cachedPbkdf2=function(a,b){var c=sjcl.misc.pa,d;b=b||{};d=b.iter||1E3;c=c[a]=c[a]||{};d=c[d]=c[d]||{firstSalt:b.salt&&b.salt.length?b.salt.slice(0):sjcl.random.randomWords(2,0)};c=void 0===b.salt?d.firstSalt:b.salt;d[c]=d[c]||sjcl.misc.pbkdf2(a,c,b.iter);return{key:d[c].slice(0),salt:c.slice(0)}};
 "undefined"!==typeof module&&module.exports&&(module.exports=sjcl);"function"===typeof define&&define([],function(){return sjcl});
+    var encryptedHtml = '{"iv":"1NsVV39e2UqXYPBQ88KUPw==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"GAuVeXYEp5Y=","ct":"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"}';
+    function onLoad() {
+        var password = sessionStorage.getItem('password');
+        if (password) {
+            onNavigate();
+        } else {
+            password = getParameterByName("password")
+            if (password) {
+                sessionStorage.setItem('password', password);
+                onNavigate();
+            } else {
+                password = prompt('Please enter password.');
+                if (password != null || password != '') {
+                    sessionStorage.setItem('password', password);
+                    onNavigate();
+                }
+            }
+        }
+    }
+    function onNavigate() {
+        var password = sessionStorage.getItem('password');
+        if (password) {
+            try {
+                var decryptedHtmlPage = sjcl.decrypt(password, encryptedHtml);
+                document.open("text/html", "replace");
+                document.write(decryptedHtmlPage);
+                document.close();
+            } catch (error) {
+                sessionStorage.removeItem('password');
+                alert('Password is incorrect.');
+                onLoad();
+            }
+        } else {
+            onload();
+        }
+    }
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+</script>
+
+<body onload="onLoad()">
+    <h1>Page Loading...</h1>
+    <p><a href="#" onclick="onNavigate()">Click here if the page does not load</a></p>
+</body>
+
+</html>

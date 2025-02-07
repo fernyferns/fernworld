@@ -1,1 +1,7 @@
 src/
+tools/
+
+
+build.js
+sjcl.js
+template.html
