@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Chilanka", serif;
+    src: url("./Chilanka-Regular.ttf") format('ttf');
+}
+
+.chapter-nav {
+    font-family: "Chilanka", serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20pt;
+    text-align: center;
+}
+
+.chapter-title {
+    font-family: "Chilanka", serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 32pt;
+    text-align: left;
+}
+
+.chapter-body {
+    font-family: "Chilanka", serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18pt;
+    text-align: left;
+}
