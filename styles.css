@@ -3,26 +3,36 @@
     src: url("./Chilanka-Regular.ttf") format('ttf');
 }
 
-.chapter-nav {
+html {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 2em;
+    margin-right: 2em;
+    max-width: 800px;
+}
+
+* {
     font-family: "Chilanka", serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 20pt;
+}
+
+p {
+    margin-bottom: 1.3em;
+}
+
+a {
+    color: darkgreen;
+}
+
+hr {
+    border-top: 1px dashed darkgreen;
+}
+
+.chapter-nav {
+    font-weight: lighter;
+    font-size: 1.1em;
     text-align: center;
 }
 
-.chapter-title {
-    font-family: "Chilanka", serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 32pt;
-    text-align: left;
-}
-
-.chapter-body {
-    font-family: "Chilanka", serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 18pt;
-    text-align: left;
+.alert {
+    background-color: lemonchiffon;
 }
