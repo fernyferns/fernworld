@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Chilanka", serif;
-    src: url("./Chilanka-Regular.ttf") format('ttf');
+    src: url(./Chilanka-Regular.ttf) format('ttf');
 }
 
 html {
