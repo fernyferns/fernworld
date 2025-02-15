@@ -1,3 +1,5 @@
+var alertShown = false;
+
 function login(manualLogin = false) {
 
     var password = "";
@@ -66,6 +68,7 @@ function showAlert(message) {
     var container = document.getElementById("alert");
     if (container) {
         container.outerHTML = `<p id="alert" class="alert" onClick="dismissAlert()"><a href="#" onClick="dismissAlert()">[x]</a>&nbsp;&nbsp;${message}</p>`;
+        alertShown = true;
     }
 }
 
@@ -73,5 +76,15 @@ function dismissAlert() {
     var container = document.getElementById("alert");
     if (container) {
         container.outerHTML = `<p id="alert"></p>`;
+        alertShown = false;
+    }
+}
+
+function passwordKeyPress(event) {
+    if (alertShown) {
+        dismissAlert();
+    }
+    if (event.key == "Enter") {
+        login(true);
     }
 }
