@@ -6,18 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fernworld</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
+    <style>
+        html {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+            margin-left: 2em;
+            margin-right: 2em;
+            max-width: 800px;
+        }
+
+        * {
+            font-family: 'Chilanka';
+        }
+
+        p {
+            margin-bottom: 1.3em;
+        }
+
+        .alert {
+            background-color: lemonchiffon;
+        }
+    </style>
     <script src="./sjcl.js"></script>
     <script src="./script.js"></script>
 </head>
 
 <script>
-
-    var encryptedHtml = '{"iv":"vJCIrNcPKuH/wwN8BZsfaQ==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"4ax6gUbUvx8=","ct":"iHnJ66GsbxFH86R76swYk4lKw1viWmroz71L28jEn88N0uKy9LqqHv+rjyKKAA+HvzhzjYOoDVeHSIxFF8m8aog6c2QpZyvM0L9saSv/qFy8cgMkD+gPJ+UkeLLBZ9c2ES+Ej/uvBylYz4qtmeodmIYU9+5L84o+m51dYJ8XsLUrKMQlLIgJjZT1rpdzFN5GA1TaCvLHGqnSB7UnRi+xMcCEp87KjiMhpll94b6R4+htZAp2fLuSDoHcYU3BwbFXVCJEcQJM5/6PPwNuhhDNR48lRfey6cZUtQgbwhTvlrkRaSLk2BqK1NDOOK9ctV+GFw2EmblAelpbwDb6w19L5IR4stgzOWaOSDX9h3tmEpTj3asxRySwEqlPQBSFYmaf5DcDS37HkRlnbxmwn1aoE0FgDCRswY7Au8JYSRqkma2N++8vznx3g1SHiRkWQKKl1D4rujT9Pj2cs5w5uB69DjqV23kKwdgBMxdKKRY9ogxwoK6LG+xFNXMjnibqbgfC+SLA1vS8Pd/3YqgGCjQfvCr3IewztcicupSKwaJuqmvx772zDxAG9PtxfgMW68kqpbyudZQttAOnDjlyZS+Z0wjFpnatMtKwaunUPmhJEuOV7YviF9//gKiBQi8C3WVJMsHYFZUxBsik7gwAlTeEXiOefzpGggKpCLGL0nP6CD+BvLgB+VBGAdaSW/WFPKaQP7j4C1ibGWUERfSW/dAIsGyW7/qUuBSdwHxAgS4FSffNNeGNagoWZvbEtSDUqJjimJJGGDWEo9ufGmsopclA9h17T3osPM+5K+uvW07a/pNDJo9ahN6hyvTtoZnMF2jUQXopzVRKGFMxA5vTym0cj4FRai/zjQZg7NJ71Rba38lLqdW5htLhFRV04uMZdXx9F6VxEwjegKFXAAlvUb2BIdFfwAZO5ohtK3nUkjN8zWWK8P6ot2pwZxsLu004gUj/3kUFySjrHTGcNDtAGNZTx1z5GaD4B9PaD9wQBY8/WPLZPdfmcFfm3KjTQEsBdtSfYm5tU0Ttm5UgqICWc+GiIPt30h3uC8diwBaCRLuAJebgnlq7QSkZUjKg5cKEhC2TZ9mOh0QDr/AHeWxeiw+e39JHYjxI3QgIzwqkbdPK87rYLjrUUE4ZruCUu3dWtj/snwaaRj3jWcQ9JXCnJfjyPyOEoj2Tt2ucEvkKNkHli1KsgcFMYiw5Zpj5VxQgjpNoBx7mOqlm9I6Yae0Wtij2mdXxxlRghkeBGSZAqpRGO0KiNWwDuUF/iNku6ob2BkP4b1QSwUDewmg3KzHkigvQFuMmPXlkdiM7VgtLFjTPSjTy1OMaNiei6BuPiy2KAfalChkLMqR5YsoDAF9ZsPSgUK228xg8ujJCRkw9mkW8Vzy+ZTZRgYpFP2kQ+TTQ57W2rqDy509f5UN23R2WAEGdciNbLjduQK5oTrF47q7VAtUXj/f8OtQp7eaVHmAnyt//h6/slLzUCU93WAq/aPmclpEpG0rYnbkzvYRiG+ZeTJwrBz7uN5PwFjes8lW1rZ6IdvlFtl0kLoDcbI3zhdnj8Ub+u8bqUrZewr3+m/Eqym5UaBMJhKY5HJHcp1Pr6GXzrimJQS/GuFhPDp4KOtmergFI3vsA+HghjYHSAOMP3vW1pdfTaqFKRf1C"}';
+ 
+    var encryptedHtml = '{"iv":"qctoI7oSSDHGpKXHyYgFiw==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"kNXYYm+2Bk8=","ct":"4ZetaH3ioswx30z08DeuT0S/hbBIe8sr9wI0IazM7Zf+txuqPbTBWB66GIKJWaOxNvGqUfUbpinZWyNEWhvUUyxeI65kxo1B5OrmjnKEztZTGX3YPHnBNxpK8nvr2Wfq1HHbGTkANO2hD97rN7FuWZgKk10JX9RzTj27xLDaUelPh+I8ZYXriziZmTV/Yr4vNdLeufv/VduQN6tnFLgFhaCrFEdP6dlYsCvdTPGRHXDg4s3CvKYQt3/V9xXyfKqwBuF62b7BOPwr8s3qHWNukg5lpepdhWSzaADck6TuuEs5SQwrn24341QTYAA1MRp2TsQrVGykvhRxccllvl1nqrKHlr+Yl4ZuonQAkNKNZAcrWXtuFNJaad5p5mevpb0vb4HoIB770mTNWs3tTK9XEvu/NYa19Nzo8Xd/0Bu/2y3tvm1bh7wIlc4uNKG6iJL/sOVN/Pg1tvkDO+PYJMZlkcNzM6aPvO4DVE//QA9f8y7mgftlTmuYQOmmINnPIOYiTr+uAh0rjxV6PLBfHWavDu4JaKPdyFCpKR0g0IvHaOxqfk0uPbohb6DxKuUemoUgglBDGaZ8lSkd+7V2HIWxJjcTfAE6yhYQ3y8KgfCzOV/85qrfEmi1uOwuVUMEw4griT43vlfmNmpeDQu9PfjeAnXcp7G7R6Og3l/MBP7cW1p3kDWR0NMWXiCs7y0Dhh14NbvQ5S56qBfzOKs8zgxaGpCKirNrIgVFklpiJcYmYBz2akKvasOh+z+YaZ2UVus9w1S7+ZHZJvB21griCzIDTVkgNdrZZc8CsKjKpMdmCNzEKI6pf6U5nlMedTDzTFSn06rD2oVf+qTjR0bh4gW9W/2Vu368JPDFgnRp94mMGr8C7HiKcvmMIjDhqWXPLbiv1uK9Zt9YK6JDILh6xTdhjhnawFPNDTdoOG+ruBywVV5tndLM+VRuH3DeoEOBlx6Qt7xjgtj1qrH24WPXVJPk2T+YM/0NaNlwt+gOTXNf5wLbcWfBUepDOf2R8up6o/2KsgWVTuMjM6b+dbXOSrEI2MXINsJd/5sb2mUuR/0XcxFiyc18QfA/uGlNogBIe/ogSnXO6FDt59lXI/flFXPMHjiegG3fTF3ARvaA3zLotA3OwedmVTS1xsVDjPEGS+WFUCCGFfgl3an1U7G7mbZfZaOTjVm3+26t1/bU+kbSSRAMXSBpXoESyQwju1rlg8hJiF09yBco38jkpOb1whD2aCu4L2TYEYJx/lIEOYNH8PpleMgpOwa2gICRBjlQuOwiHHByGpxLYXl0kNd85JTTughsaYkmHFCq5b/R1DiEmmJHGd+t3z8WKOv8hJsNDqgYMjvSuuc/5TgpdHWERW+MLEfYJpVg2RPNIdgbbA92DG80REt+CTTWWqEwErq6BXowxBQnFOVt4vxshIwf9FUmmNwp9NReHdMwwUNqNT9mmVV4+0bD0uVBaBj58CtH+7MEMbHumnxFfwK/d+lfnrnWsSGcrDF8AsoBk87hUkKr6+ZLP1ceKnuZvl90oOT11eJJbYx03bwxgEfqH6ZkmkcC/R9Z7OzNmY0mEH66s0GC/6pooKOsb7UAX26hn77OpHpQzzgkBi6hzrlWt5vLk2+Yu64KAdu4AgUPgkl2UGLUv8H5gmJsXd98AJZPS8q0oZKnZ0qYvUpxsadjagRgIF4S8VfE1JdjtvsBDH5CK4GDPyQ0DOB6MI6027F9zn+foZ+w4Df56LI5i/DNRUzxuJtZU74YNPtEMvxAOvqAlLuqnZddk7OkFhRyNrRi5MuzJqFURnA0b7JSthVKJH0A5+2s2LylPj4+cZ5iZxKOWUHYj1FcOjzj6pI+fOI7ZL0NCPG8ePVMsGFluZS7EGFCb/sCGcySroQ6MgZkI0iRCqP+PDWWkgQS173sucRmEPF/AAMgfMUhkRhpIeT6SZNOHzmGoeTmrsjkR93HbnglUea1VRB3wM3FMlJl0jwI/1GafloaonsxBEbMysq51K2W/cRWQv7y+XrVkda+W1GpwkBMOzYdzCrlfsSKN1bObAZoe0YP0cjBMEeeXXz8KXnmLJHSXwnyvh1tylGHP8xMigzhvPj2wRqmBZNjPSk="}';
 
     login();
 
@@ -38,7 +57,7 @@
 
     <div>
         <label for="password">Password</label>
-        <input type="password" id="password" required disabled onkeypress="passwordKeyPress(event)"/>
+        <input type="password" id="password" required disabled onkeypress="passwordKeyPress(event)" />
         <p>Ask Fern if you don't know the password.</p>
     </div>
 
@@ -57,7 +76,7 @@
             document.getElementById("password").removeAttribute("disabled");
 
             login();
-            
+
         }
 
     </script>

@@ -1,8 +1,8 @@
-src/
-tools/
-data/
 .vscode/
-
-
+source/
+tools/
+images/
+templates/
+styles/
 
 

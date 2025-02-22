@@ -1,25 +1,85 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Fernworld</title>
-	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fernworld</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
+    <style>
+        html {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+            margin-left: 2em;
+            margin-right: 2em;
+            max-width: 800px;
+        }
+
+        * {
+            font-family: 'Chilanka';
+        }
+
+        p {
+            margin-bottom: 1.3em;
+        }
+
+        .alert {
+            background-color: lemonchiffon;
+        }
+    </style>
+    <script src="./sjcl.js"></script>
+    <script src="./script.js"></script>
 </head>
 
-<body lang="en-GB">
+<script>
+ 
+    var encryptedHtml = '{"iv":"EgjALa2LDN7I83lTxQUv3Q==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"kNXYYm+2Bk8=","ct":"3RE3d0C3bRKbF4+4yH9ywlHiFzjlS+cNN4kkCRDrHX4LNRFPfuO/zP0w1O3Ajl3ePmyUOjI2XxY9bh1tiFI5pm4XEKoph/6vGQy0IzGfNO94DfUKlNNFTb1PRSl5apEncycWzfAbzDhrUeF0Ssl8960wpr4WB0HkLWBoD2RinhrC5KsCX7xTexlgovrVjiHiIgG1kWuAIQzurEhkaDLxrrxomKERK6nwCR19A4j0dciLApHkUaP+7jEB+jXkjzpN3kzvuxgLw1V6C7huJ97Fc1hzCt8/Z7+c8zx/+gePPjfnKknffHsAh1YSlJJDBpbVd9zIYYskoKtxWLgza4vlSblc16KXJ6gkRS8OKQgs2B6TM2iteyxJNsfwqlv8MhYu2+y/KdmJRqiJZH+jQoE8ak26sifCPSeG8qnV4wS3WoLSxQCbcxKjH8iCjGqLlqmJtRg5+3VsdBjJ3xS0MBrZdLysv73Al5zE1RDQB7VARmsaReC2dOaueVHvCJUFtI4ggq1GMI8q79V+iuzvpXIKvQyBGXiAct5n+Wgu18alBwOsXfI7nrXs8j+Nxm9duohMFCKounU7YrdSLaMRBmnnPyOFFvwW3Ccq6DYSmgm2eXu6CHZwLD45V+5+77weruamuOYN8QfqnwmxipW274oGfxk0YTIYjQZYrNxCtzS01u/tCdydJdGRedYoGuZQw1zus2AiQKpQfH6PDaeCgzmzegmXzXDy62EeLXiUGHI43ZwAlOl7WtjBgir3jLjRxMElNPSE9ywg5SZwyYQ6Z79U+wR2JODF91FzPdmpid0Ihx7PugM81ryL6UYKeKU/ucFILPArnRBFL5CIn0i2C6bnVRNA1MW3u2weQeO2Aa6NqcabnanFSEUOKRX8WwhCj85AoA1t87h03+5JJopTXh347cyFuuCCW6N/GtsXuLxaXRLGHfZwT+ovN/d+CYPg7GobhPx79tCnUVdzHKrJ9Oe4fANnErpBS3cXMbSUA7j+Fwi5XfONLFGliYsjiruFApUz4j2ir237EIatgj7vAuEREVMioG5U9SsQhUEV6RafMDroscr7MHh6vN0EAeOKcZ35TU1teuzDiogokw2HHwM6QLadx5Oa57JUpUZtK43LPCXDGI9MjbBDQe9uly6ybLHrFD1qK9tKnkQUIIC4F0KLdROWe3f8r8spw7JGzzBp75Zsvk5FcVL7xusRB6DYWMiPzKL9Oisbz9vHrCXmoCzhKe2Y"}';
 
-	<h1 align="center">404 Not Found</h1>
+    login();
 
-	<h2 align="center">There is no page here 🧐</h2>
 
-	<footer>
-		<p class="chapter-nav"><a href="./index.html">Home</a></p>
-	</footer>
+</script>
+
+<body onload="onLoad()">
+
+    <noscript>
+        <p class="alert">This site requires JavaScript to function. Login will not function without scripts enabled.</p>
+    </noscript>
+
+    <p id="alert"></p>
+
+    <h1>
+        Login
+    </h1>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" required disabled onkeypress="passwordKeyPress(event)" />
+        <p>Ask Fern if you don't know the password.</p>
+    </div>
+
+    <p>
+        <button disabled type="button" id="loginBtn" onclick="login(true)">
+            Login
+        </button>
+    </p>
+
+    <script>
+
+        function onLoad() {
+
+            //enable login button.
+            document.getElementById("loginBtn").removeAttribute("disabled");
+            document.getElementById("password").removeAttribute("disabled");
+
+            login();
+
+        }
+
+    </script>
 
 </body>
 
