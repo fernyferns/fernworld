@@ -32,12 +32,102 @@
         }
     </style>
     <script src="./sjcl.js"></script>
-    <script src="./script.js"></script>
 </head>
 
 <script>
- 
-    var encryptedHtml = '{"iv":"xdx6UAbHRLqJOjdS0mphnQ==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"72p0E9MANrQ=","ct":"/pGtsBRKAy7zUPvZ2a1AfCKO610vKWwchBb0VYbnhNtrbwCvWhnG7WlRh8wKODEiQp4/0a+Y0zaR0IjAqCTwiSfQ5aTDLbRlnOHER6+BI7symmX2UnIjCdibVGDodA7BXhh9I9USpPROPgfr1v9ECyUxdTqKNRZFDzLFXuLXXTZC091gt08IvcEL2q9Jk/EGNyjEgdMT9GiEPdrQs6AxaqMB4aCTUvKmw1OPor8e7QCjAVz7IKzDKF2AvevvVECzZBoXSvGrwFfFEVr1Lc2nNK8XsYfP1VQeOang1bwM6yugHruOT1ws9bq5ixEfdMHnhG8lAW2BQwerdiWz2Ls81dPLKDLz0GCoh/KlCcc26Uwnyf6e7xGlA1Jqc0kLd4RaCx5lOsvvK96UUkq80bUFNhxR0bvaHAjiUn7uVwY9ntblZw3zc0eLwaL7fsnXSymHHyLcZp4mcQJbYME7d91I0cW/gMIUTsQGli9QsoBnBlMy2ORCneacuhK4Sk5IoB5P9fYf80mua0blxokEvPDK82qCRT0Wk9/1BlxdTXGUZgAoVTiwnNvHKExUCgPA978hbHYwm88YqCsy9KpB5gdPaq3S+mC6V/Urjwj7UYdJhEBk4aipA7hjToeNvRD59gUMkcy8R1uK55SO+AHA12hxd5zLugmVP5KzXkpERXSqGDfYqjng0gn+8upkQZLQBejPPzSAJdOtNKj5eYn70nfIgeCfbEUmZUdep4S4DZIMU/Jxs0+VY0btbXctpx0P7wZF1uscIV4aBiWX3iwzK95RuVTERGfZC7eX53W7gMbW6oej400us3LJQlWsvq8LKPASBK9RM0LWvfD8cABBCM99lTW48BGWkMs0Vosc/YCSIW6JK8sA6Qt95Cv7eOe/ovKtXnlivt7LX3TW5ZYzP8oRfqKL+mTWwq+lRGfH5fkmvDAqdLed2odeuod9HiXOlV8Y/cvt2zBscVo2q38vJ/2JSOMqlfv+vhQ9YdtyS+2zXNMuGuGa4wEDEedCPnNL8ilcxGcMyL66Q9H1nxURzAwM8Wpo5FZv9Vk5aPXIq2t/yyUr8ViE5vsxdz8uBmSIewR+AP4EVm2WQ0g+lbNdWkHtC83MCIh4pRsti/viRaKJ2tGI8CCqE+mv5K1qVrY+qY98hD/KW/G+P4W5Jlekcg1dviUwA5Zgpd9ll28G1nk5aZ13Vsk+/ThubaIBB7LjDWo0oqdl/pai08U4uLudRMLjo4PcoapZwzZZQUtYZcNEixLRH2Ble76xDO7PypXt8dClFHlOpCB7ZlHh+Q=="}';
+
+    var alertShown = false;
+
+    function login(manualLogin = false) {
+
+        var password = "";
+
+        try {
+
+            if (manualLogin) {
+                password = document.getElementById("password").value || "";
+                localStorage.setItem("password", password);
+                decryptAndRender(password);
+                return;
+            }
+
+            else {
+
+                //check if password is in query string
+                password = getParameterByName("password");
+                if (password) {
+                    localStorage.setItem("password", password);
+                    decryptAndRender(password);
+                    return;
+                }
+
+                //check if password is already in storage
+                password = localStorage.getItem("password");
+                if (password) {
+                    decryptAndRender(password);
+                    return;
+                }
+
+            }
+
+        } catch (error) {
+            //clear session storage on error.
+            localStorage.removeItem("password");
+            if (error) {
+                if (error.message == "ccm: tag doesn't match") {
+                    showAlert("Password incorrect");
+                } else if (error.message) {
+                    showAlert(error.message);
+                } else {
+                    showAlert("Something went wrong.");
+                }
+            }
+        }
+
+    }
+
+    function decryptAndRender(password) {
+        var decryptedHtmlPage = sjcl.decrypt(password, encryptedHtml);
+        document.open("text/html", "replace");
+        document.write(decryptedHtmlPage);
+        document.close();
+    }
+
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    function showAlert(message) {
+        var container = document.getElementById("alert");
+        if (container) {
+            container.outerHTML = `<p id="alert" class="alert" onClick="dismissAlert()"><a href="#" onClick="dismissAlert()">[x]</a>&nbsp;&nbsp;${message}</p>`;
+            alertShown = true;
+        }
+    }
+
+    function dismissAlert() {
+        var container = document.getElementById("alert");
+        if (container) {
+            container.outerHTML = `<p id="alert"></p>`;
+            alertShown = false;
+        }
+    }
+
+    function passwordKeyPress(event) {
+        if (alertShown) {
+            dismissAlert();
+        }
+        if (event.key == "Enter") {
+            login(true);
+        }
+    }
+
+    var encryptedHtml = '{"iv":"skVG0dPff4I/KuJJfgpWbA==","v":1,"iter":10000,"ks":128,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"9yXl9RbCtec=","ct":"dM7l2RznI6bua5/xRSmsficXl/vY8jlyNKLrJeXQARIETKo5Zb8Zn2IiWHc9w3zo+jtJuDRLn8KAkjkyqusdXP+Zcfv3PZPBc1Ba3NAJPeebhSRyjmmuD3pbhXzunAclss6x9VFT9OEgTzCrDZJ62yyrC/wSbiEB5xrFX8pJg7tQkjfO96KtMZqd/z7zwnKn4xDEWU2rpywA16cOS6Xr8unblJ6QHmtoTzHCzPwIHJKJr0o89MRtQOAfEn2Y5r7yPH75g968EGKbcvhZRf5md7X2m1FXv+nxEw0oFbz3pkPdoJcrNq3P7K1SVj3F7QJmrPq1/s7VvbzM6aEHeE0sSSptGg0paTJGmzDt4/S4OPPqUcdkCnCbAEvRq+Qd0l3/o1e0nWYiqxVwcJHNFJNMbG3tPixOUxZ2MPQTKgahSQhrdYRFd/G0gYtNiTZchtDtF8rpnBZs9a4VkPhmbb0nqWspUwoUVSA/EZ3J9dywkzDpPW0uX6S+bf2/gj2qATCo3Ja3oeeur0bfqklseELlHNmNUYOYX3clJ1QYP4MKeaqMCURf+b13EnWVuloDWecrmK7LuiAppV9bpmguHN8Gb3dz4P0md5fJFc19BZ7Kmm5mJWWy/t38ge3sppRW/M95KIeP4iE2Dr9lrWUhKOgqIXPMMyGwY/hfU/FEP8OiYHMAEgs98rrMIuYHsOaES3fY9JbEMsU37QzEu5zR1aT+qRY16/PX7sIBu/BwBz92L3bLHXRLlpX1+tcAlJ4Pl+KGX88cyl1x9wgSSYHO0143RfOuO6aTz4jUWC8BN85t7WflgTYEx7HClZv0dv4olK77NlvE0BV8yM52vkiBZ6w8ACs8vVmC9ZAze+2G6mxkccAjwHrhFVnM7Dn1j8/935PmN7lLADPGdsvhiTwhwW5SBKgG84W+pKwAWPpRgFmZkc7XsHMez9+yo8U3MS6Zh0opJZpIgXfaKOnJOtBRWxYs4pv/feycb5xmiYcdm7spDRLLP2Y4jBtF4vD14t5IBeMqzqNIAxaWArSZrWhRnFwE1f+y/Zj8GWGQJcCgDnntHusYSf6CzAWoh2Dpf3YYnZe6/Ff/+jRplzNHem+bYEdO4OAubK7eIAMR3WDwUR4rVcuQe+skcJRLyMjJRYlxRLw4/IWoMSHcNadM5mAwKvYKRbf1WxdBJzKlbwCgRak5JRpg6/tS+I5+n+7a/V4SzZhuIFdTobSO1B97EfFGQ3+KWwcGAtM2yrTAr9b4rywdwzeh2EeClSrT5ygwsc3HMkPbkMDyCMcPjMCdXg=="}';
 
     login();
 
